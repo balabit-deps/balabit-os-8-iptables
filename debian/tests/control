@@ -61,3 +61,7 @@ Restrictions: needs-root, isolation-container
 Test-Command: ip6tables-translate -h
 Depends: @
 Restrictions: needs-root, isolation-container
+
+Test-Command: chmod +x ./iptables/tests/shell/testcases/chain/0006rename-segfault_0; cd iptables/tests/shell; ./run-tests.sh --host
+Depends: @, nftables:native
+Restrictions: needs-root, isolation-machine

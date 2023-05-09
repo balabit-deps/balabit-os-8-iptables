@@ -1,0 +1,24 @@
+Description: fix case/esac that was deciding whether to sort the output or not
+ Fix the globbing expression which was used to decide whether to sort the
+ restore output or not before comparing it to the good case
+ Only the firewalld tests were failing, so that's the only part of the upstream
+ fix that was pulled into this patch.
+Origin: upstream, https://git.netfilter.org/iptables/commit/?id=2b2b7948c1960ba4680677664ff58477be869de6
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/iptables/+bug/2019023
+Last-Update: 2023-05-10
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+
+diff --git a/iptables/tests/shell/testcases/firewalld-restore/0001-firewalld_0 b/iptables/tests/shell/testcases/firewalld-restore/0001-firewalld_0
+index 8bf0c2c6..0174b03f 100755
+--- a/iptables/tests/shell/testcases/firewalld-restore/0001-firewalld_0
++++ b/iptables/tests/shell/testcases/firewalld-restore/0001-firewalld_0
+@@ -231,7 +231,7 @@ for table in nat mangle raw filter;do
+ done
+ 
+ case "$XT_MULTI" in
+-*/xtables-nft-multi)
++*xtables-nft-multi)
+ 	# nft-multi displays chain names in different order, work around this for now
+ 	tmpfile2=$(mktemp)
+ 	sort "$tmpfile" > "$tmpfile2"

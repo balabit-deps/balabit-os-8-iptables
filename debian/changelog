@@ -1,3 +1,19 @@
+iptables (1.8.4-3ubuntu2.1) focal; urgency=medium
+
+  [ Louis Bouchard ]
+  * d/p/0001-libiptc-Fix-for-segfault-when-renaming-a-chain.patch: apply
+    upstream fix for segfault when renaming a chain. Includes a test
+    case (LP: #1992454)
+
+  [ Andreas Hasenack ]
+  * Fix shell tests, and run them as DEP8 (LP: #2019023):
+    - d/p/0501-fix-firewalld-shell-test.patch: fix the globbing expression
+      which was used to decide whether to sort the restore output or not
+      before comparing it to the good case
+    - d/t/control: run all shell tests as DEP8
+
+ -- Andreas Hasenack <andreas@canonical.com>  Tue, 09 May 2023 15:39:57 -0300
+
 iptables (1.8.4-3ubuntu2) focal; urgency=medium
 
   * debian/control: correct Breaks/Replaces for ipt_kernel_headers.h
